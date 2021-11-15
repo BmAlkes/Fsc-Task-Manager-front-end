@@ -22,6 +22,10 @@ const AddTasks = () => {
             if (task.length === 0) {
                 return alert.error("Task need a description to be add");
             }
+            await axios.post("http://localhost:8000/tasks", {
+                description: task,
+                isCompleted: false,
+            });
         } catch (e) {}
     };
     return (
