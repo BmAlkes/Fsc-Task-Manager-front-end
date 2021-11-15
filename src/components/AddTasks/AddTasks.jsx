@@ -8,7 +8,7 @@ import CustomInput from "../CustomInput/CustomInput";
 
 import "./AddTask.scss";
 
-const AddTasks = () => {
+const AddTasks = ({ fetchTasks }) => {
     const [task, setTask] = useState("");
 
     const alert = useAlert();
@@ -26,7 +26,11 @@ const AddTasks = () => {
                 description: task,
                 isCompleted: false,
             });
-        } catch (e) {}
+            await fetchTasks();
+            setTask(" ");
+        } catch (e) {
+            alert.error("something is wrong");
+        }
     };
     return (
         <div className="add-task-container">
