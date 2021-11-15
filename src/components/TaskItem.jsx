@@ -17,20 +17,6 @@ const TaskItem = ({ task, fetchTasks }) => {
         }
     };
 
-    const handleTaskCompletionChange = async (e) => {
-        try {
-            await axios.patch(`http://localhost:8000/tasks/${task._id}`, {
-                isCompleted: e.target.checked,
-            });
-
-            await fetchTasks();
-
-            alert.success("Task modified successfully!");
-        } catch (error) {
-            alert.error("Algo deu errado.");
-        }
-    };
-
     return (
         <div className="task-item-container">
             <div className="task-description">
