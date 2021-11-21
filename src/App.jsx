@@ -1,9 +1,14 @@
-import TaskItem from "./components/TaskItem";
 import Tasks from "./components/Tasks/Tasks";
-import "./App.css";
+import SideBar from "./components/sidebar/Sidebar";
+import "./App.scss";
 
 const App = () => {
-    return <Tasks />;
+    return (
+        <div className="app-container">
+            <SideBar />
+            <Tasks />
+        </div>
+    );
 };
 
 export default App;
