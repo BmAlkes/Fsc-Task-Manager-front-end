@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useAlert } from "react-alert";
 
 import AddTasks from "../AddTasks/AddTasks";
 import TaskItem from "../TaskItem";
@@ -8,12 +9,14 @@ import "./Tasks.scss";
 const Tasks = () => {
     const [task, setTask] = useState([]);
 
+    const alert = useAlert();
+
     const fetchTasks = async () => {
         try {
             const { data } = await axios.get("http://localhost:8000/tasks");
             setTask(data);
-        } catch (err) {
-            console.log(err);
+        } catch (_err) {
+            alert.error("can get tasks from DB");
         }
     };
 

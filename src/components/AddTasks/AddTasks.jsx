@@ -29,7 +29,7 @@ const AddTasks = ({ fetchTasks }) => {
             await fetchTasks();
             setTask(" ");
             alert.success("task added successfully");
-        } catch (e) {
+        } catch (_e) {
             alert.error("something is wrong");
         }
     };
