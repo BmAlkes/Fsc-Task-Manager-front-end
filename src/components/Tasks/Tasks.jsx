@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import axios from "axios";
 import { useAlert } from "react-alert";
 
@@ -11,14 +11,14 @@ const Tasks = () => {
 
     const alert = useAlert();
 
-    const fetchTasks = async () => {
+    const fetchTasks = useCallback(async () => {
         try {
             const { data } = await axios.get("http://localhost:8000/tasks");
             setTask(data);
         } catch (_err) {
             alert.error("can get tasks from DB");
         }
-    };
+    }, [alert]);
 
     const lastTasks = useMemo(() => {
         return task.filter((task) => task.isCompleted === false);
@@ -30,7 +30,7 @@ const Tasks = () => {
 
     useEffect(() => {
         fetchTasks();
-    }, []);
+    }, [fetchTasks]);
 
     return (
         <div className="tasks-container">
