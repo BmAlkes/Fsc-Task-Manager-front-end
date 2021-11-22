@@ -1,4 +1,4 @@
-<img src="./chrome-capture.jpg" maxWidth="100%"/>
+<img src="./public/chrome-capture.jpg" maxWidth="100%"/>
 
 <h2>Task Manager</h2>
 
