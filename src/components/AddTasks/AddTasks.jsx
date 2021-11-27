@@ -22,7 +22,7 @@ const AddTasks = ({ fetchTasks }) => {
             if (task.length === 0) {
                 return alert.error("Task need a description to be add");
             }
-            await axios.post("http://localhost:8000/tasks", {
+            await axios.post(`${process.env.REACT_APP_API_URL}/tasks`, {
                 description: task,
                 isCompleted: false,
             });

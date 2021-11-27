@@ -9,7 +9,9 @@ const TaskItem = ({ task, fetchTasks }) => {
 
     const handleTaskDeletion = async () => {
         try {
-            await axios.delete(`http://localhost:8000/tasks/${task._id}`);
+            await axios.delete(
+                `${process.env.REACT_APP_API_URL}/tasks/${task._id}`
+            );
             alert.success("Task deleted successfully!");
             await fetchTasks();
         } catch (_error) {
@@ -19,9 +21,12 @@ const TaskItem = ({ task, fetchTasks }) => {
 
     const handleChangeCompleteTask = async (e) => {
         try {
-            await axios.patch(`http://localhost:8000/tasks/${task._id}`, {
-                isCompleted: e.target.checked,
-            });
+            await axios.patch(
+                `${process.env.REACT_APP_API_URL}/tasks/${task._id}`,
+                {
+                    isCompleted: e.target.checked,
+                }
+            );
             await fetchTasks();
             alert.success("Task updated successfully!");
         } catch (_error) {
