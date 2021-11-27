@@ -6,7 +6,7 @@
     position: relative;
 
     @media (max-width: 768px) {
-        display: none;
+        width: 70px;
     }
 
     display: flex;
@@ -22,5 +22,9 @@
     }
     img {
         width: 130px;
+        @media (max-width: 768px) {
+            width: 60px;
+            margin-left: -20px;
+        }
     }
 }
